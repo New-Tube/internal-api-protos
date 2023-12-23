@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "internal-api-protos/test";
+
+package test;
+
+service User {
+    rpc Hello (HelloRequest) returns (HelloResponse);
+}
+
+message  HelloRequest {
+    string Name = 1;
+}
+
+message HelloResponse {
+    string Message = 1;
+}
