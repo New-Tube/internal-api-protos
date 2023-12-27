@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option go_package = "internal-api-protos/video";
+
+package video;
+
+service VideoRegularUser {
+    rpc GetInfo (VideoRequest) returns (VideoResponse);
+    rpc GetVideoStream (VideoStreamRequest) returns (StatusResponse);
+    rpc GetReaction (VideoRequest) returns (VideoReactionResponse);
+    rpc UpdateReaction (VideoReactionUpdateRequest) returns (StatusResponse);
+}
+
+message VideoResponse {
+    uint64 ID = 1;
+	uint64 UserID = 2;
+    string Title = 3;
+    string Description = 4;
+    Privacy Privacy = 5;
+    uint64 Likes = 6;
+    uint64 Dislikes = 7;
+    uint64 CreatedAt = 8;
+    uint64 EditedAt = 9;
+}
+
+message VideoStreamRequest {
+    uint64 ID = 1;
+    uint64 UserID = 2;
+    string Quality = 3;
+}
+
+message VideoReactionResponse {
+    bool IsLike = 1;
+    bool IsDislike = 2;
+}
+
+message VideoReactionUpdateRequest {
+    uint64 ID = 1;
+    uint64 UserID = 2;
+    bool IsLike = 3;
+    bool IsDislike = 4;
+}

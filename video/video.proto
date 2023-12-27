@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option go_package = "internal-api-protos/video";
+
+package video;
+
+message VideoRequest {
+    uint64 ID = 1;
+    uint64 UserID = 2;
+}
+
+message StatusResponse {
+    bool Success = 1;
+    string Message = 2;
+}
+
+enum Privacy {
+    Public = 0;
+    Link = 1;
+    Private = 2;
+}
+

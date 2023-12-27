@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option go_package = "internal-api-protos/video";
+
+package video;
+
+service VideoCreatorUser {
+    rpc Create (VideoRequest) returns (VideoCreateResponse);
+    rpc UpdateInfo (VideoUpdateRequest) returns (StatusResponse);
+    rpc GetUploadLink (VideoRequest) returns (StatusResponse);
+    rpc Delete (VideoRequest) returns (StatusResponse);
+}
+
+message VideoCreateResponse {
+    bool Success = 1;
+    uint64 ID = 2;
+}
+
+message VideoUpdateRequest {
+    uint64 ID = 1;
+    string Title = 3;
+    string Description = 4;
+    Privacy Privacy = 5;
+}
