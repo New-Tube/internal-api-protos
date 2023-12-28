@@ -8,11 +8,11 @@ package internal_api;
 
 service Comment {
     rpc Get (CommentRequest) returns (CommentResponse);
+    rpc GetMany (GetCommentsRequest) returns (GetCommentsResponse);
     rpc Create (CommentRequest) returns (StatusResponse);
     rpc GetReaction (CommentRequest) returns (CommentReactionResponse);
     rpc UpdateReaction (CommentUpdateReactionRequest) returns (StatusResponse);
     rpc Delete (CommentRequest) returns (StatusResponse);
-    rpc GetComments (GetCommentsRequest) returns (GetCommentsResponse);
 }
 
 message CommentRequest {
@@ -31,4 +31,28 @@ message CommentUpdateReactionRequest {
     uint64 UserID = 2;
     bool IsLike = 3;
     bool IsDislike = 4;
+}
+
+message CommentResponse {
+    uint64 ID = 1;
+    string Text = 2;
+    uint64 VideoID = 3;
+    uint64 CommentID = 4;
+    uint64 UserID = 5;
+    uint64 Likes = 6;
+    uint64 Dislikes = 7;
+    uint64 CreatedAt = 8;
+    uint64 EditedAt = 9;
+}
+
+message GetCommentsRequest {
+    uint64 VideoID = 1;
+    uint64 CommentID = 2;
+    uint32 Offset = 3;
+    uint32 Limit = 4;
+}
+
+message GetCommentsResponse {
+    uint32 Count = 1;
+    repeated CommentResponse Comments = 2;
 }
