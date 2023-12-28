@@ -16,7 +16,7 @@ service VideoRegularUser {
 
 message VideoResponse {
     uint64 ID = 1;
-	uint64 UserID = 2;
+    uint64 UserID = 2;
     string Title = 3;
     string Description = 4;
     Privacy Privacy = 5;
