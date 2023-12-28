@@ -8,7 +8,7 @@ package internal_api;
 
 service User {
     rpc Get (UserRequest) returns (UserResponse);
-    rpc Update (UserRequest) returns (StatusResponse);
+    rpc Update (UserUpdateRequest) returns (StatusResponse);
     rpc Create (UserCreateRequest) returns (UserResponse);
 }
 
@@ -27,9 +27,17 @@ message UserResponse {
     uint64 EditedAt = 7;
 }
 
+message UserUpdateRequest {
+    uint64 ID = 1;
+    string Name = 2;
+    string Surname = 3;
+    string Nickname = 4;
+    uint64 PasswordHash = 5;
+}
+
 message UserCreateRequest {
     string Nickname = 1;
     uint64 PasswordHash = 2;
-    optional string Name = 3;
-    optional string Surname = 4;
+    string Name = 3;
+    string Surname = 4;
 }
