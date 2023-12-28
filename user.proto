@@ -1,8 +1,10 @@
 syntax = "proto3";
 
-option go_package = "internal-api-protos/user";
+option go_package = "github.com/New-Tube/internal-api-protos";
 
-package user;
+import "common.proto";
+
+package internal_api;
 
 service User {
     rpc Get (UserRequest) returns (UserResponse);
@@ -23,11 +25,6 @@ message UserResponse {
     uint64 PasswordHash = 5;
     uint64 CreatedAt = 6;
     uint64 EditedAt = 7;
-}
-
-message StatusResponse {
-    bool Success = 1;
-    string Message = 2;
 }
 
 message UserCreateRequest {

@@ -1,14 +1,18 @@
 syntax = "proto3";
 
-option go_package = "internal-api-protos/video";
+option go_package = "github.com/New-Tube/internal-api-protos";
 
-package video;
+import "video.proto";
+import "common.proto";
+
+package internal_api;
 
 service VideoRegularUser {
     rpc GetInfo (VideoRequest) returns (VideoResponse);
     rpc GetVideoStream (VideoStreamRequest) returns (StatusResponse);
     rpc GetReaction (VideoRequest) returns (VideoReactionResponse);
     rpc UpdateReaction (VideoReactionUpdateRequest) returns (StatusResponse);
+    rpc GetComments (GetCommentsRequest) returns (GetCommentsResponse);
 }
 
 message VideoResponse {
