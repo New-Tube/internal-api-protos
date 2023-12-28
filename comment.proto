@@ -8,17 +8,22 @@ package internal_api;
 
 service Comment {
     rpc Get (CommentRequest) returns (CommentResponse);
-    rpc GetMany (GetCommentsRequest) returns (GetCommentsResponse);
-    rpc Create (CommentRequest) returns (StatusResponse);
+    rpc GetMany (GetManyRequest) returns (GetManyResponse);
+    rpc Create (CommentCreateRequest) returns (StatusResponse);
     rpc GetReaction (CommentRequest) returns (CommentReactionResponse);
     rpc UpdateReaction (CommentUpdateReactionRequest) returns (StatusResponse);
     rpc Delete (CommentRequest) returns (StatusResponse);
 }
 
 message CommentRequest {
+    uint64 ID = 1;
+}
+
+message CommentCreateRequest {
     uint64 UserID = 1;
     uint64 VideoID = 2;
     uint64 CommentID = 3;
+    string Text = 4;
 }
 
 message CommentReactionResponse {
@@ -45,14 +50,14 @@ message CommentResponse {
     uint64 EditedAt = 9;
 }
 
-message GetCommentsRequest {
+message GetManyRequest {
     uint64 VideoID = 1;
     uint64 CommentID = 2;
     uint32 Offset = 3;
     uint32 Limit = 4;
 }
 
-message GetCommentsResponse {
+message GetManyResponse {
     uint32 Count = 1;
     repeated CommentResponse Comments = 2;
 }
