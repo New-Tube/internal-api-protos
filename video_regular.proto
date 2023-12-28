@@ -20,10 +20,11 @@ message VideoResponse {
     string Title = 3;
     string Description = 4;
     Privacy Privacy = 5;
-    uint64 Likes = 6;
-    uint64 Dislikes = 7;
-    uint64 CreatedAt = 8;
-    uint64 EditedAt = 9;
+    string Link = 6;
+    uint64 Likes = 7;
+    uint64 Dislikes = 8;
+    uint64 CreatedAt = 9;
+    uint64 EditedAt = 10;
 }
 
 message VideoStreamRequest {

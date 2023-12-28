@@ -24,4 +24,5 @@ message VideoUpdateRequest {
     string Title = 3;
     string Description = 4;
     Privacy Privacy = 5;
+    string Link = 6;
 }
