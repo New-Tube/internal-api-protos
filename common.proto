@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option go_package = "github.com/New-Tube/internal-api-protos";
+
+package internal_api;
+
+message StatusResponse {
+    bool Success = 1;
+    string Message = 2;
+}

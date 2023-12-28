@@ -1,8 +1,11 @@
 syntax = "proto3";
 
-option go_package = "internal-api-protos/video";
+option go_package = "github.com/New-Tube/internal-api-protos";
 
-package video;
+import "video.proto";
+import "common.proto";
+
+package internal_api;
 
 service VideoRegularUser {
     rpc GetInfo (VideoRequest) returns (VideoResponse);
@@ -13,7 +16,7 @@ service VideoRegularUser {
 
 message VideoResponse {
     uint64 ID = 1;
-	uint64 UserID = 2;
+    uint64 UserID = 2;
     string Title = 3;
     string Description = 4;
     Privacy Privacy = 5;

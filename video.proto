@@ -1,17 +1,12 @@
 syntax = "proto3";
 
-option go_package = "internal-api-protos/video";
+option go_package = "github.com/New-Tube/internal-api-protos";
 
-package video;
+package internal_api;
 
 message VideoRequest {
     uint64 ID = 1;
     uint64 UserID = 2;
-}
-
-message StatusResponse {
-    bool Success = 1;
-    string Message = 2;
 }
 
 enum Privacy {
@@ -19,4 +14,3 @@ enum Privacy {
     Link = 1;
     Private = 2;
 }
-
