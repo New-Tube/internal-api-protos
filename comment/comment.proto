@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option go_package = "internal-api-protos/comment";
+
+package comment;
+
+service Comment {
+    rpc Get (CommentRequest) returns (CommentResponse);
+    rpc Create (CommentRequest) returns (StatusResponse);
+    rpc GetReaction (CommentRequest) returns (CommentReactionResponse);
+    rpc UpdateReaction (CommentUpdateReactionRequest) returns (StatusResponse);
+    rpc Delete (CommentRequest) returns (StatusResponse);
+}
+
+message CommentRequest {
+    uint64 UserID = 1;
+    uint64 VideoID = 2;
+    uint64 CommentID = 3;
+}
+
+message StatusResponse {
+    bool Success = 1;
+    string Message = 2;
+}
+
+message CommentResponse {
+    uint64 ID = 1;
+	string Text = 2;
+	uint64 VideoID = 3;
+	uint64 CommentID = 4;
+	uint64 UserID = 5;
+	uint64 Likes = 6;
+	uint64 Dislikes = 7;
+    uint64 CreatedAt = 8;
+    uint64 EditedAt = 9;
+}
+
+message CommentReactionResponse {
+    bool IsLike = 1;
+    bool IsDislike = 2;
+}
+
+message CommentUpdateReactionRequest {
+    uint64 ID = 1;
+    uint64 UserID = 2;
+    bool IsLike = 3;
+    bool IsDislike = 4;
+}
