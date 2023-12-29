@@ -10,8 +10,8 @@ service Comment {
     rpc Get (CommentRequest) returns (CommentResponse);
     rpc GetMany (GetManyRequest) returns (GetManyResponse);
     rpc Create (CommentCreateRequest) returns (StatusResponse);
-    rpc GetReaction (CommentRequest) returns (CommentReactionResponse);
-    rpc UpdateReaction (CommentUpdateReactionRequest) returns (StatusResponse);
+    rpc GetReaction (ReactionRequest) returns (ReactionResponse);
+    rpc UpdateReaction (UpdateReactionRequest) returns (StatusResponse);
     rpc Delete (CommentRequest) returns (StatusResponse);
 }
 
@@ -24,18 +24,6 @@ message CommentCreateRequest {
     uint64 VideoID = 2;
     uint64 CommentID = 3;
     string Text = 4;
-}
-
-message CommentReactionResponse {
-    bool IsLike = 1;
-    bool IsDislike = 2;
-}
-
-message CommentUpdateReactionRequest {
-    uint64 ID = 1;
-    uint64 UserID = 2;
-    bool IsLike = 3;
-    bool IsDislike = 4;
 }
 
 message CommentResponse {

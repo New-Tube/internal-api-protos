@@ -8,3 +8,20 @@ message StatusResponse {
     bool Success = 1;
     string Message = 2;
 }
+
+message ReactionRequest {
+    uint64 UserID = 1;
+    uint64 ID = 2;
+}
+
+message ReactionResponse {
+    bool IsLike = 1;
+    bool IsDislike = 2;
+}
+
+message UpdateReactionRequest {
+    uint64 ID = 1;
+    uint64 UserID = 2;
+    bool IsLike = 3;
+    bool IsDislike = 4;
+}
